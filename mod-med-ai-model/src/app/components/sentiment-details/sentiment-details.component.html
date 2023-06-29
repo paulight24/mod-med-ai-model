@@ -1,0 +1,33 @@
+<p mat-dialog-title>Sentiment details</p>
+
+<mat-dialog-content>
+    <mat-list>
+        <mat-list-item>
+            <span matListItemTitle>Input</span>
+            <span matListItemLine>{{ data.row.command}}</span>
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Sentiment</span>
+            <div class="d-flex justify-content-start">
+                <ng-container [ngSwitch]="data.row.sentiment">
+                    <mat-icon *ngSwitchCase="'Positive'" matSuffix style="float:left; color: lightslategray;"
+                        class="me-2">sentiment_very_satisfied</mat-icon>
+                    <mat-icon *ngSwitchCase="'Negative'" matSuffix style="float:left; color: red;" class="me-2">
+                        sentiment_dissatisfied</mat-icon>
+                    <mat-icon *ngSwitchCase="'Neutral'" matSuffix style="float:left; color: yellowgreen;" class="me-2">
+                        sentiment_neutral</mat-icon>
+                </ng-container>
+                <span matListItemLine>{{ data.row.sentiment}}</span>
+            </div>
+
+        </mat-list-item>
+        <mat-list-item>
+            <span matListItemTitle>Explanation</span>
+            <span matListItemLine>{{ data.row.explanation}}</span>
+        </mat-list-item>
+    </mat-list>
+</mat-dialog-content>
+
+<mat-dialog-actions class="m-3">
+    <button mat-raised-button [mat-dialog-close]="true" color="primary">Close</button>
+</mat-dialog-actions>

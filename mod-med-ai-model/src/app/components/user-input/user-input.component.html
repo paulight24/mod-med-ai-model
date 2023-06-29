@@ -1,0 +1,26 @@
+<form [formGroup]="form" ngSubmit="submit()">
+    <h2 mat-dialog-title>Enter AI command below?</h2>
+
+    <mat-dialog-content>
+        <p>
+            <mat-form-field appearance="outline">
+                <mat-label>AI input command</mat-label>
+                <textarea matInput placeholder="Insert" formControlName="command"></textarea>
+                <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+
+                <!-- ERROR HANDLING -->
+                <mat-hint class="text-danger">
+                    <ng-container *ngIf="command?.errors && (command?.touched || command?.dirty)">
+                        This field is required.
+                    </ng-container>
+                </mat-hint>
+
+            </mat-form-field>
+        </p>
+    </mat-dialog-content>
+
+    <mat-dialog-actions class="m-3">
+        <button mat-raised-button color="primary" type="submit" (click)="submit()">Submit</button>
+        <button mat-button [mat-dialog-close]="true">Cancel</button>
+    </mat-dialog-actions>
+</form>
