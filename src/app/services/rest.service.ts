@@ -22,7 +22,7 @@ export class RestService {
       );
   }
 
-  addSentiment(param: Partial<Sentiment>): Observable<Sentiment> {
+  addSentiment(param: Sentiment): Observable<Sentiment> {
     return this._httpConnectService.addSentiment(param)
       .pipe(
         catchError((error) => {
